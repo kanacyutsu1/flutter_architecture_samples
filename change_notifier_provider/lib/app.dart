@@ -15,17 +15,22 @@ class ProviderApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+
     return ChangeNotifierProvider(
       create: (_) => TodoListModel(repository: repository)..loadTodos(),
       child: MaterialApp(
-        theme: ArchSampleTheme.lightTheme,
-        darkTheme: ArchSampleTheme.darkTheme,
+        // theme: ArchSampleTheme.lightTheme,
+        // darkTheme: ArchSampleTheme.darkTheme,
+        // theme :  ArchSampleTheme.darkTheme,
+
         localizationsDelegates: [
           ArchSampleLocalizationsDelegate(),
           ProviderLocalizationsDelegate(),
         ],
         onGenerateTitle: (context) =>
             ProviderLocalizations.of(context).appTitle,
+        // ศึกษา
         routes: {
           ArchSampleRoutes.home: (context) => HomeScreen(),
           ArchSampleRoutes.addTodo: (context) => AddTodoScreen(),
