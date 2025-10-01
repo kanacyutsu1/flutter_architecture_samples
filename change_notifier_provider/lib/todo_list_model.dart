@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:change_notifier_provider_sample/models.dart';
-import 'package:collection/collection.dart';    //yes
+import 'package:collection/collection.dart';
 import 'package:flutter/widgets.dart';
 import 'package:todos_repository_core/todos_repository_core.dart';
 
@@ -40,7 +40,7 @@ class TodoListModel extends ChangeNotifier {
   Future<void> loadTodos() {
     _isLoading = true;
     notifyListeners();
-    print('loafloaasdpasdmpasdaaaaaaaaaaaaaaaaaaaaaaaaa');
+
     return repository
         .loadTodos()
         .then((loadedTodos) {
@@ -58,10 +58,8 @@ class TodoListModel extends ChangeNotifier {
     return _todos.where((todo) {
       switch (filter) {
         case VisibilityFilter.active:
-          print('acc');
           return !todo.complete;
         case VisibilityFilter.completed:
-          print('comp');
           return todo.complete;
         case VisibilityFilter.all:
           return true;
@@ -109,8 +107,9 @@ class TodoListModel extends ChangeNotifier {
 
   Todo? todoById(String id) => _todos.firstWhereOrNull((it) => it.id == id);
 
-  int get numCompleted => todos.where((Todo todo) => todo.complete).toList().length;
-  
+  int get numCompleted =>
+      todos.where((Todo todo) => todo.complete).toList().length;
+
   bool get hasCompleted => numCompleted > 0;
 
   int get numActive =>
